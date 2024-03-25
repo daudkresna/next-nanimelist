@@ -21,6 +21,7 @@ const SearchInput = () => {
       id="inputanime"
       onKeyDown={handleSearch}
       ref={searchRef}
+      className="p-2 w-full md:w-fit"
     />
   );
 };

@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const AnimeList = ({ animes }) => {
   return (
-    <div className="px-8 grid md:grid-cols-4 gap-4 sm:grid-cols-3 grid-cols-2 ">
-      {animes.data.map((data) => {
+    <div className="px-8 py-4 grid md:grid-cols-4 gap-4 sm:grid-cols-3 grid-cols-2 ">
+      {animes.data?.map((data) => {
         return (
           <div
             key={data.mal_id}
