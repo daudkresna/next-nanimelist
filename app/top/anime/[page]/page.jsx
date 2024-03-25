@@ -9,7 +9,7 @@ const Page = ({ params }) => {
   const [topAnimes, setTopAnimes] = useState([]);
 
   const fetchData = async () => {
-    const data = await getAnimesApi("top/anime", `page=${params.page}`);
+    const data = await getAnimesApi("top/anime", `?page=${params.page}`);
     setTopAnimes(data);
   };
 

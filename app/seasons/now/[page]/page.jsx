@@ -7,10 +7,9 @@ import { getAnimesApi } from "@/app/libs/api-libs";
 
 const Page = ({ params }) => {
   const [nowAnimes, setNowAnimes] = useState([]);
-  const [page, setPage] = useState(1);
 
   const fetchData = async () => {
-    const data = await getAnimesApi("seasons/now", `page=${params.page}`);
+    const data = await getAnimesApi("seasons/now", `?page=${params.page}&sfw`);
     setNowAnimes(data);
   };
 

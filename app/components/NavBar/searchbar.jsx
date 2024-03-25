@@ -8,7 +8,7 @@ const SearchInput = () => {
   const router = useRouter();
 
   function handleSearch(e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchRef.current.value != "") {
       e.preventDefault();
       const searchKey = searchRef.current.value;
       router.push(`/search/${searchKey}`);

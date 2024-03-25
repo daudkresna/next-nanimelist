@@ -5,8 +5,8 @@ import Header from "./components/AnimeList/header";
 import { getAnimesApi } from "./libs/api-libs";
 
 const Home = async () => {
-  const topAnimes = await getAnimesApi("top/anime", "limit=8");
-  const newAnimes = await getAnimesApi("seasons/now", "limit=8");
+  const topAnimes = await getAnimesApi("top/anime", "?limit=8&sfw");
+  const newAnimes = await getAnimesApi("seasons/now", "?limit=8&sfw");
   const page = 1;
 
   return (
