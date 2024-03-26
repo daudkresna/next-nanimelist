@@ -7,7 +7,7 @@ const VideoPlayer = ({ youtubeId }) => {
   const [playerOpen, setPlayerOpen] = useState(true);
   const opts = {
     height: "200",
-    width: "400",
+    width: "300",
   };
 
   const handlePlayerOpen = () => {

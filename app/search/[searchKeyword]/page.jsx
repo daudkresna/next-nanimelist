@@ -6,8 +6,9 @@ import React from "react";
 const Page = async ({ params }) => {
   const animeSearch = await getAnimesApi(
     "anime",
-    `q=${params.searchKeyword}&sfw&order_by=rank&sort=asc`
+    `?q=${params.searchKeyword}&sfw&order_by=rank&sort=asc`
   );
+  console.log(animeSearch);
 
   return (
     <>
