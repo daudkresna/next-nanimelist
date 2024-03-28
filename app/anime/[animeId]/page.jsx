@@ -1,21 +1,32 @@
 import VideoPlayer from "@/app/components/Utilities/VideoPlayer";
 import { getAnimesApi } from "@/app/libs/api-libs";
 import Image from "next/image";
+import CollectionButton from "./CollectionButton";
+import { userSession } from "@/app/libs/auth-libs";
+import prisma from "@/app/libs/prisma";
 
-export default async function AnimeDetails({
-  params,
-}: {
-  params: { animeId: string };
-}) {
+export default async function AnimeDetails({ params }) {
   const animeInfo = await getAnimesApi("anime/", `${params.animeId}`);
+  const user = await userSession();
+  const checkCollection = await prisma.collection.findFirst({
+    where: { user_email: `${user?.email}`, anime_mal_id: `${params.animeId}` },
+  });
 
   return (
     <div className="p-4">
-      <div className="text-center">
+      <div className="text-center relative">
         <h1 className="text-xl font-bold">{animeInfo.data.title_english}</h1>
         <h3 className="text-lg font-semibold text-slate-400">
           {animeInfo.data.title_japanese}
         </h3>
+        {!checkCollection && user && (
+          <CollectionButton
+            user_email={user?.email}
+            mal_anime_id={params.animeId}
+            anime_title={animeInfo.data.title}
+            anime_image={animeInfo.data.images.webp.image_url}
+          />
+        )}
       </div>
       <div className="flex md:flex-row flex-col px-2 my-2">
         <div className=" mr-4 flex items-center flex-row w-full text-center md:flex-col md:w-1/4">

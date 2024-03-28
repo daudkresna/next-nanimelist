@@ -8,11 +8,10 @@ export const authOption = {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 export const userSession = async () => {
   const user = await getServerSession(authOption);
-  console.log(user?.user);
   return user?.user;
 };
